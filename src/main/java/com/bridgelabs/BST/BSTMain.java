@@ -4,7 +4,7 @@ public class BSTMain {
 
 	public static void main(String[] args) {
 		BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-		// Use case-1
+		// Use case-2
 		tree.addData(56);
 		tree.addData(30);
 		tree.addData(70);
@@ -22,6 +22,7 @@ public class BSTMain {
 		System.out.println("Size of tree: " + tree.sizeofBST());
 		System.out.println("Height of tree: " + tree.heightBST());
 
+		// use case-3
 		if (tree.search(65) == null)
 			System.out.print("Not Found");
 		else

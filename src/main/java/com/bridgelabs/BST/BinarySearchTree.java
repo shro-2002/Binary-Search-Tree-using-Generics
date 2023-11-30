@@ -3,9 +3,9 @@ package com.bridgelabs.BST;
 /*
  * @description: Binary Search Tree using Generics
  * 
- * @Class Variables: root
+ * @Properties: root
  * 
- * @Class Methods: insert, addData, inorderTraversal, searchData, search, display, size, size1
+ * @Behaviour: insert, addData, inorderTraversal, searchData, search, display, size, sizeofBST,height, heightBST
  */
 public class BinarySearchTree<T extends Comparable<T>> {
 	private INode<T> root;
@@ -93,35 +93,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * @description: Method to find the height of BST
-	 * 
-	 * @param: root
-	 * 
-	 * @return: int
-	 */
-
-	public int height(INode<T> root) {
-
-		if (root == null) {
-			return 0;
-		}
-
-		return 1 + Math.max(height(root.getleft()), height(root.getright()));
-	}
-
-	/*
-	 * @description: Method to call height function of BST
-	 * 
-	 * @param: void
-	 * 
-	 * @return: int
-	 */
-
-	public int heightBST() {
-		return height(root);
-	}
-
-	/*
 	 * @description: Method to call search function in BST
 	 * 
 	 * @param: val
@@ -167,6 +138,35 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	int sizeofBST() {
 		return size(root);
 
+	}
+
+	/*
+	 * @description: Method to find the height of BST
+	 * 
+	 * @param: root
+	 * 
+	 * @return: int
+	 */
+
+	public int height(INode<T> root) {
+
+		if (root == null) {
+			return 0;
+		}
+
+		return 1 + Math.max(height(root.getleft()), height(root.getright()));
+	}
+
+	/*
+	 * @description: Method to call height function of BST
+	 * 
+	 * @param: void
+	 * 
+	 * @return: int
+	 */
+
+	public int heightBST() {
+		return height(root);
 	}
 
 }
