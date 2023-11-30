@@ -18,10 +18,14 @@ public class BSTMain {
 		tree.addData(16);
 		tree.addData(63);
 		tree.addData(67);
-		
-		
+
 		System.out.println("Size of tree: " + tree.sizeofBST());
 		System.out.println("Height of tree: " + tree.heightBST());
+
+		if (tree.search(65) == null)
+			System.out.print("Not Found");
+		else
+			System.out.print("Found: " + tree.search(63).getdata());
 
 		tree.display();
 	}
