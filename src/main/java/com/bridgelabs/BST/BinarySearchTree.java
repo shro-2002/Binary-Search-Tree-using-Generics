@@ -33,9 +33,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			root = new BinaryNode<T>(value);
 			return root;
 		}
-
+		// if value < root data
 		if ((root.getdata().compareTo(value)) > 0)
 			root.setleft(insert(root.getleft(), value));
+
+		// if value > root data
 		else if (((root.getdata().compareTo(value)) < 0))
 			root.setright(insert(root.getright(), value));
 
@@ -55,21 +57,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * @description: Method to traverse BST in inorder traversal
+	 * @description: Method to traverse BST in inorder traversal(left,root,right)
 	 * 
 	 * @param: root, s
 	 * 
 	 * @return: void
 	 */
-	void inorderTraversal(INode<T> root, String s) {
+	void inorderTraversal(INode<T> root) {
 		if (root == null)
 			return;
 
-		inorderTraversal(root.getleft(), "left->");
-		System.out.println("Node->" + "at " + s + root.getdata());
-		inorderTraversal(root.getright(), "right");
-
 		System.out.println();
+		inorderTraversal(root.getleft());
+		System.out.println("Node->" + root.getdata());
+		inorderTraversal(root.getright());
 
 	}
 
@@ -81,20 +82,47 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * @return: root
 	 */
 	INode<T> searchData(INode<T> root, T data) {
-		// Base Cases: root is null or key is present at root
+
 		if (root == null || root.getdata() == data)
 			return root;
 
-		// Key is greater than root's key
 		if ((root.getdata().compareTo(data)) < 0)
 			return searchData(root.getright(), data);
 
-		// Key is smaller than root's key
 		return searchData(root.getleft(), data);
 	}
 
 	/*
-	 * @description: Method to call search data in BST
+	 * @description: Method to find the height of BST
+	 * 
+	 * @param: root
+	 * 
+	 * @return: int
+	 */
+
+	public int height(INode<T> root) {
+
+		if (root == null) {
+			return 0;
+		}
+
+		return 1 + Math.max(height(root.getleft()), height(root.getright()));
+	}
+
+	/*
+	 * @description: Method to call height function of BST
+	 * 
+	 * @param: void
+	 * 
+	 * @return: int
+	 */
+
+	public int heightBST() {
+		return height(root);
+	}
+
+	/*
+	 * @description: Method to call search function in BST
 	 * 
 	 * @param: val
 	 * 
@@ -105,14 +133,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * @description: Method to display BST
+	 * @description: Method to call traversal function BST
 	 * 
 	 * @param: void
 	 * 
 	 * @return: void
 	 */
 	void display() {
-		inorderTraversal(root, "root");
+		inorderTraversal(root);
 	}
 
 	/*
@@ -130,7 +158,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * @description: Method to find size of BST
+	 * @description: Method to call size function of BST
 	 * 
 	 * @param: void
 	 * 
